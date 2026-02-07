@@ -1,0 +1,1096 @@
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safe Beauty: Hygiene Awareness</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Base Styles with New Color Theme */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #5a4a4a;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-color: #fff8f8; /* Soft baby pink background */
+      position: relative;
+    }
+
+    /* Animation Classes */
+    .slide-in {
+      animation: slideIn 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .slide-up {
+      animation: slideUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .slide-left {
+      animation: slideLeft 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .slide-right {
+      animation: slideRight 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .pop-in {
+      animation: popIn 0.6s ease-out forwards;
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    /* Keyframe Animations */
+    @keyframes slideIn {
+      from {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideLeft {
+      from {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideRight {
+      from {
+        transform: translateX(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      70% {
+        transform: scale(1.05);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(to right, #ffffff, #ffebf3);
+      padding: 20px;
+      text-align: center;
+      color: #9d7a7a;
+      border-bottom: 3px solid #f9d6e5;
+      position: relative;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tagline {
+      font-style: italic;
+      color: #c99595;
+      margin-top: -10px;
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 5px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+      letter-spacing: 1px;
+      font-weight: 600;
+      color: #d87b7b;
+    }
+
+    /* Navigation */
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 0;
+      margin: 20px auto 0;
+      flex-wrap: wrap;
+      max-width: 1200px;
+    }
+
+    .tab-btn {
+      background-color: #fff8f8;
+      border: 2px solid #f9d6e5;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      color: #9d7a7a;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+    }
+
+    .tab-btn:hover {
+      background-color: #f9d6e5;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    }
+
+    .tab-btn.active-btn {
+      background-color: #e8bfbf;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-color: #e8bfbf;
+    }
+
+    .tab-btn i {
+      font-size: 0.9em;
+    }
+
+    /* Main Content */
+    main {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 30px auto;
+      min-height: 70vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tab-content {
+      display: none;
+      margin: 30px auto;
+      background: #fffdfd;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid #f9e0e9;
+      transition: all 0.5s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tab-content h2 {
+      font-size: 2.2rem;
+      color: #d87b7b;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+      font-weight: 600;
+    }
+
+    /* Home Section */
+    .hero-banner {
+      position: relative;
+      margin-bottom: 30px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+      border: 5px solid white;
+      transition: all 0.3s ease;
+    }
+
+    .home-image {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .hero-banner:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+    }
+
+    .hero-banner:hover .home-image {
+      transform: scale(1.03);
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(216, 123, 123, 0.85);
+      color: white;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .hero-text h2 {
+      color: white;
+      margin: 0;
+      font-size: 2.5rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .quick-link-card {
+      background: #fffdfd;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.03);
+      border: 1px solid #f9e0e9;
+    }
+
+    .quick-link-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+      border-color: #e8bfbf;
+    }
+
+    .quick-link-card i {
+      font-size: 2.5rem;
+      color: #e8bfbf;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .quick-link-card:hover i {
+      transform: scale(1.2);
+    }
+
+    .quick-link-card h3 {
+      margin: 10px 0;
+      color: #d87b7b;
+      font-weight: 600;
+    }
+
+    /* About Section */
+    .about-content {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 1;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      font-weight: 500;
+    }
+
+    .about-image {
+      flex: 1;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+      transition: transform 0.5s ease;
+      border: 5px solid white;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Hygiene Guide Section */
+    .guide-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .guide-section {
+      background: #fff8f8;
+      padding: 30px;
+      border-radius: 15px;
+      border-left: 5px solid #e8bfbf;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.03);
+      border: 1px solid #f9e0e9;
+      transition: all 0.3s ease;
+    }
+
+    .guide-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+    }
+
+    .guide-section h3 {
+      color: #d87b7b;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+
+    .guide-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .guide-section li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      transition: transform 0.3s ease;
+      padding: 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .guide-section li:hover {
+      transform: translateX(5px);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .guide-section i {
+      color: #e8bfbf;
+      margin-top: 3px;
+    }
+
+    /* Products Section */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .product-card {
+      background: #fffdfd;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
+      border: 1px solid #f9e0e9;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      transition: transform 0.5s ease;
+      background: white;
+      padding: 20px;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-card h3 {
+      margin: 15px 15px 5px;
+      color: #d87b7b;
+      font-weight: 600;
+    }
+
+    .product-card p {
+      margin: 0 15px 15px;
+      font-size: 0.95rem;
+      color: #9d7a7a;
+      font-weight: 500;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .gallery-item {
+      text-align: center;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 5px solid white;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+      border-color: #f9d6e5;
+    }
+
+    .gallery-item p {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #d87b7b;
+      font-weight: 600;
+    }
+
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contact-info ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .contact-info li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.3s ease;
+      padding: 10px;
+      border-radius: 8px;
+      background: #fff8f8;
+    }
+
+    .contact-info li:hover {
+      transform: translateX(5px);
+      background: #ffebf3;
+    }
+
+    .contact-info i {
+      color: #e8bfbf;
+      width: 25px;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    .contact-form {
+      background: #fff8f8;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.03);
+      border: 1px solid #f9e0e9;
+      transition: all 0.3s ease;
+    }
+
+    .contact-form:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #f9d6e5;
+      border-radius: 8px;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #e8bfbf;
+      box-shadow: 0 0 0 3px rgba(232, 191, 191, 0.2);
+      outline: none;
+      background: white;
+    }
+
+    .contact-form textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      background: #e8bfbf;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      width: 100%;
+      letter-spacing: 1px;
+    }
+
+    .contact-form button:hover {
+      background: #d9aeae;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .modal-content {
+      background: #fffdfd;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+      position: relative;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      border: 1px solid #f9e0e9;
+    }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 20px 0;
+      max-height: 300px;
+      object-fit: contain;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+      border: 5px solid white;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 15px; right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #e8bfbf;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    .close-button:hover {
+      transform: rotate(90deg);
+      color: #d9aeae;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: linear-gradient(to right, #ffffff, #ffebf3);
+      color: #9d7a7a;
+      border-top: 3px solid #f9d6e5;
+      margin-top: 50px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .home-btn {
+      background: #e8bfbf;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .home-btn:hover {
+      background: #d9aeae;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .about-content,
+      .guide-container,
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero-text h2 {
+        font-size: 1.8rem;
+      }
+      
+      nav ul {
+        gap: 8px;
+      }
+      
+      .tab-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+
+      .modal-content {
+        padding: 20px 15px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .tagline {
+        font-size: 1.1rem;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Safe Beauty</h1>
+      <p class="tagline">Promoting Hygienic Cosmetic Testing</p>
+    </div>
+    <nav>
+      <ul>
+        <li><button class="tab-btn" data-tab="home"><i class="fas fa-home"></i> Home</button></li>
+        <li><button class="tab-btn" data-tab="about">About</button></li>
+        <li><button class="tab-btn" data-tab="hygiene-guide">Hygiene Guide</button></li>
+        <li><button class="tab-btn" data-tab="Where">Risky Products</button></li>
+        <li><button class="tab-btn" data-tab="gallery">Disease Info</button></li>
+        <li><button class="tab-btn" data-tab="contact">Contact</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="tab-content">
+      <div class="hero-banner">
+        <img src="C:\Users\Ralph\OneDrive\Desktop\website\images\home-banner.jpg" alt="Hygiene Awareness" class="home-image slide-in" />
+        <div class="hero-text fade-in">
+          <h2>Enhancing Health Through Cosmetic Hygiene</h2>
+          <p>Reliable practices for safe cosmetic testing</p>
+        </div>
+      </div>
+      <div class="quick-links">
+        <div class="quick-link-card" data-tab="hygiene-guide">
+          <i class="fas fa-hand-sparkles"></i>
+          <h3>Hygiene Guide</h3>
+          <p>Proper safety procedures for cosmetic testing</p>
+        </div>
+        <div class="quick-link-card" data-tab="Where">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>Risky Products</h3>
+          <p>Products with high contamination potential</p>
+        </div>
+        <div class="quick-link-card" data-tab="gallery">
+          <i class="fas fa-bacteria"></i>
+          <h3>Disease Info</h3>
+          <p>Common hygiene-related infections</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="tab-content">
+      <h2 class="slide-up">About the Initiative</h2>
+      <div class="about-content">
+        <div class="about-text fade-in">
+          <p>This platform aims to raise awareness regarding the importance of hygiene in cosmetic testing environments. It addresses risks associated with unsanitary tester usage and highlights the best practices for both retailers and consumers.</p>
+          <p>With proper education and sanitation protocols, users can significantly reduce the risk of skin and eye infections caused by contaminated cosmetic testers.</p>
+        </div>
+        <div class="about-image slide-in">
+          <img src="https://placehold.co/600x400/ffebf3/9d7a7a?text=About+Safe+Beauty" alt="About Safe Beauty">
+        </div>
+      </div>
+    </section>
+
+    <section id="hygiene-guide" class="tab-content">
+      <h2 class="slide-up">Hygiene Guidelines</h2>
+      <div class="guide-container">
+        <div class="guide-section slide-left">
+          <h3><i class="fas fa-store"></i> For Retail Staff</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Disinfect testers after each customer use</li>
+            <li><i class="fas fa-check-circle"></i> Replace testers every 2–3 months</li>
+            <li><i class="fas fa-check-circle"></i> Provide single-use applicators</li>
+            <li><i class="fas fa-check-circle"></i> Display visible hygiene guidelines</li>
+            <li><i class="fas fa-check-circle"></i> Dispose of expired or contaminated products</li>
+            <li><i class="fas fa-check-circle"></i> Make hand sanitizers readily available</li>
+          </ul>
+        </div>
+        <div class="guide-section slide-right">
+          <h3><i class="fas fa-user"></i> For Customers</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Wash or sanitize hands before testing</li>
+            <li><i class="fas fa-check-circle"></i> Use only disposable applicators</li>
+            <li><i class="fas fa-check-circle"></i> Avoid using testers on broken skin</li>
+            <li><i class="fas fa-check-circle"></i> Do not test products on eyes or mouth</li>
+            <li><i class="fas fa-check-circle"></i> Check for product expiration dates</li>
+            <li><i class="fas fa-check-circle"></i> Notify staff if testers appear unhygienic</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="Where" class="tab-content">
+      <h2 class="slide-up">High-Risk Cosmetic Products</h2>
+      <div class="product-grid">
+        <div class="product-card pop-in" style="animation-delay: 0.1s">
+          <img src="C:\Users\Ralph\OneDrive\Desktop\website\images\canmake-mascara.png" alt="Mascara">
+          <h3>Mascara</h3>
+          <p>Moist environments can lead to bacterial growth near eyes</p>
+        </div>
+        <div class="product-card pop-in" style="animation-delay: 0.2s">
+          <img src="C:\Users\Ralph\OneDrive\Desktop\website\images\lipgloss.png" alt="Lip Gloss">
+          <h3>Lip Products</h3>
+          <p>Oral contact increases transmission of infections</p>
+        </div>
+        <div class="product-card pop-in" style="animation-delay: 0.3s">
+          <img src="C:\Users\Ralph\OneDrive\Desktop\website\images\eyeshadow.png" alt="Eyeshadow">
+          <h3>Eye Products</h3>
+          <p>Sensitive areas prone to irritation and bacterial transfer</p>
+        </div>
+        <div class="product-card pop-in" style="animation-delay: 0.4s">
+          <img src="C:\Users\Ralph\OneDrive\Desktop\website\images\blush.png" alt="Cream Products">
+          <h3>Cream Products</h3>
+          <p>Prone to contamination from repeated dipping</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="tab-content">
+      <h2 class="slide-up">Related Health Concerns</h2>
+      <p class="fade-in">Click an image to learn more about common hygiene-related infections:</p>
+      <div class="gallery">
+        <div class="gallery-item slide-left">
+          <img src="C:\Users\Ralph\OneDrive\Desktop\website\images\dermatitis.jpg" alt="Contact Dermatitis" class="popup-img" data-title="Dermatitis" data-description="Inflammation of the skin caused by allergens or irritants. Symptoms include redness, swelling, and sometimes blistering. (MSD Manual, 2025)">
+          <p>Contact Dermatitis</p>
+        </div>
+        <div class="gallery-item fade-in">
+          <img src="C:\Users\Ralph\OneDrive\Desktop\website\images\pinkeye.jpg" class="popup-img" data-title="Pink Eye (Conjunctivitis)" data-description="An inflammation of the conjunctiva, typically caused by a virus or bacteria. Common symptoms include redness and itching. (Mayo Clinic, 2025)">
+          <p>Pink Eye</p>
+        </div>
+        <div class="gallery-item slide-right">
+          <img src="C:\Users\Ralph\OneDrive\Desktop\website\images\herpes.jpg" alt="Herpes" class="popup-img" data-title="Herpes Simplex" data-description="Caused by HSV-1 or HSV-2, resulting in blisters and cold sores. It is contagious and can be spread through contact. (MedPark Hospital, 2023)">
+          <p>Herpes Simplex</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="tab-content">
+      <h2 class="slide-up">Contact Us</h2>
+      <div class="contact-container">
+        <div class="contact-info fade-in">
+          <h3>Get in Touch</h3>
+          <p>We welcome your feedback and inquiries:</p>
+          <ul>
+            <li><i class="fas fa-envelope"></i> Email: rlimjoco290108@livingstone.ph.education</li>
+            <li><i class="fab fa-instagram"></i> Instagram: @LivingStoneInternationalSchool</li>
+            <li><i class="fab fa-facebook"></i> Facebook: Living Stone International School</li>
+          </ul>
+        </div>
+        <div class="contact-form slide-in">
+          <h3>Send a Message</h3>
+          <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="img-modal" class="modal">
+    <div class="modal-content slide-up">
+      <span class="close-button">&times;</span>
+      <h3 id="modal-title"></h3>
+      <img id="modal-img" src="" alt="">
+      <p id="modal-description"></p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Safe Beauty Initiative</p>
+      <button class="home-btn">
+        <i class="fas fa-home"></i> Back to Home
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    // script.js
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      function showTab(tabName) {
+        tabContents.forEach(tab => {
+          tab.classList.remove("active");
+        });
+        document.getElementById(tabName).classList.add("active");
+
+        tabButtons.forEach(btn => {
+          btn.classList.remove("active-btn");
+          if (btn.dataset.tab === tabName) {
+            btn.classList.add("active-btn");
+          }
+        });
+      }
+
+      // Initial load
+      showTab("home");
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const tab = btn.dataset.tab;
+          showTab(tab);
+        });
+      });
+
+      // Quick link cards as buttons
+      const quickLinks = document.querySelectorAll(".quick-link-card");
+      quickLinks.forEach(card => {
+        card.addEventListener("click", () => {
+          const tab = card.dataset.tab;
+          showTab(tab);
+        });
+      });
+
+      // Modal popup for disease info
+      const modal = document.getElementById("img-modal");
+      const modalImg = document.getElementById("modal-img");
+      const modalTitle = document.getElementById("modal-title");
+      const modalDescription = document.getElementById("modal-description");
+      const closeBtn = document.querySelector(".close-button");
+
+      document.querySelectorAll(".popup-img").forEach(img => {
+        img.addEventListener("click", () => {
+          modal.style.display = "flex";
+          modalImg.src = img.src;
+          modalTitle.textContent = img.dataset.title;
+          modalDescription.textContent = img.dataset.description;
+        });
+      });
+
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+
+      // Back to top/home
+      document.querySelector(".home-btn").addEventListener("click", () => {
+        showTab("home");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>
+</body>
+</html>
+
+CSS
+body {
+  font-family: 'Cormorant Garamond', serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: #fffaf6; /* Soft beige background */
+  color: #5e3d5e;
+}
+
+/* Removed scrapbook overlay + floating decor */
+
+/* Accent colors */
+:root {
+  --baby-pink: #ffe8f1;
+  --beige: #fdf6f0;
+  --rose: #e8a0bf;
+}
+
+/* Header */
+header {
+  background: var(--beige);
+  border-bottom: 3px solid var(--baby-pink);
+  padding: 20px;
+  text-align: center;
+  color: #8d5a8d;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Buttons */
+.tab-btn {
+  background: var(--baby-pink);
+  border: 1px solid var(--rose);
+  color: #8d5a8d;
+}
+.tab-btn.active-btn {
+  background: var(--rose);
+  color: #fff;
+}
+
+/* Content backgrounds */
+.tab-content {
+  background: white;
+  border: 1px solid var(--baby-pink);
+}
+.quick-link-card,
+.product-card,
+.guide-section,
+.contact-form {
+  background: var(--beige);
+  border: 1px solid var(--baby-pink);
+}
+
+/* Hero text */
+.hero-text {
+  background: rgba(232, 160, 191, 0.85);
+}
+
+JS
+// script.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const tabContents = document.querySelectorAll(".tab-content");
+
+  function showTab(tabName) {
+    tabContents.forEach(tab => {
+      tab.classList.remove("active");
+    });
+    document.getElementById(tabName).classList.add("active");
+
+    tabButtons.forEach(btn => {
+      btn.classList.remove("active-btn");
+      if (btn.dataset.tab === tabName) {
+        btn.classList.add("active-btn");
+      }
+    });
+  }
+
+  // Initial load
+  showTab("home");
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const tab = btn.dataset.tab;
+      showTab(tab);
+    });
+  });
+
+  // Quick link cards as buttons
+  const quickLinks = document.querySelectorAll(".quick-link-card");
+  quickLinks.forEach(card => {
+    card.addEventListener("click", () => {
+      const tab = card.dataset.tab;
+      showTab(tab);
+    });
+  });
+
+  // Modal popup for disease info
+  const modal = document.getElementById("img-modal");
+  const modalImg = document.getElementById("modal-img");
+  const modalTitle = document.getElementById("modal-title");
+  const modalDescription = document.getElementById("modal-description");
+  const closeBtn = document.querySelector(".close-button");
+
+  document.querySelectorAll(".popup-img").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+      modalTitle.textContent = img.dataset.title;
+      modalDescription.textContent = img.dataset.description;
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  // Back to top/home
+  document.querySelector(".home-btn").addEventListener("click", () => {
+    showTab("home");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
